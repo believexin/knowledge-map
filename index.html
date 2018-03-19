@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>知识地图</title>
+</head>
+<body>
+<div id="main" style="width: 1366px;height:768px;"></div>
+<script type="text/javascript" src="./js/echarts.min.js"></script>
+<script type="text/javascript">
+	var myChart = echarts.init(document.getElementById('main'));
+
+
+	var option = {
+    dataset: {
+        source: [
+            ['score', 'amount', 'product'],
+            [80, 90, 'SSM'],
+            [95, 30, 'Spring boot'],
+            [50, 1, 'Spring cloud'],
+            [80, 100, 'JQuery'],
+            [85, 40, 'Vue'],
+            [20, 60, 'bootstrap'],
+            [80, 1, 'zookeeper'],
+            [50, 10, 'rocketmq'],
+            [90, 15, 'python'],
+            [90, 0, '区块链'],
+            [5, 5, 'php'],
+            [5, 5, 'c#'],
+            [85, 6, 'hadoop'],
+            [70, 60, 'oracle'],
+            [85, 50, 'mysql'],
+            [60, 60, 'ArteryBase'],
+            [60, 30, 'greenplum'],
+            [100, 52, 'linux操作系统']
+        ]
+    },
+    grid: {containLabel: true},
+    xAxis: {name: '熟练度'},
+    yAxis: {type: 'category'},
+    visualMap: {
+        orient: 'horizontal',
+        left: 'center',
+        min: 10,
+        max: 100,
+        text: ['High 倾向', 'Low 倾向'],
+        // Map the score column to color
+        dimension: 0,
+        inRange: {
+            color: ['#CCCCCC','orange' ,'red']
+        }
+    },
+    series: [
+        {
+            type: 'bar',
+            encode: {
+                // Map the "amount" column to X axis.
+                x: 'amount',
+                // Map the "product" column to Y axis
+                y: 'product'
+            }
+        }
+    ]
+};
+myChart.setOption(option);
+</script>
+</body>
+</html>
